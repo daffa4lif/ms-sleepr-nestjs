@@ -37,3 +37,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Generate Command
+
+dikarenakan menggunakan pola ms monorepo, generate command menggunakan pola tertentu
+
+```bash
+$ nest generate <generate option> <name> -p <target>
+```
