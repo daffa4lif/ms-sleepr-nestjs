@@ -1,7 +1,17 @@
-import { Module } from '@nestjs/common';
+import { Inject, Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '../config/config.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://root:password@localhost:27017/ms_nestjs?authSource=admin')],
+  imports: [
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.getOrThrow<string>('MONGODB_URI'),
+      }),
+      inject: [ConfigService],
+    }),
+  ],
 })
 export class DatabaseModule {}
