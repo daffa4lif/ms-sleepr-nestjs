@@ -1,0 +1,27 @@
+services:
+  reservations:
+    image: sleepr_reservations:latest
+    container_name: reservations
+    ports:
+      - 3000:3000
+    env_file:
+      - .env.production.local
+    depends_on:
+      - mongodb
+    networks:
+      - microservice-network
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27018:27017
+    networks:
+      - microservice-network
+
+networks:
+  microservice-network:
