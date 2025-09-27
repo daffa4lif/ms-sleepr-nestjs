@@ -10,9 +10,7 @@ export class ReservationsService {
   create(createReservationDto: CreateReservationDto) {
     return this.reservationsRepository.create({
       ...createReservationDto,
-      userId: 'adsdasdasdasd',
-      placeId: 'dasdasdasdasd',
-      invoiceId: 'asdasdasdasd',
+      userId: 'adsdasdasdasd', // nanti diambil dari auth
     });
   }
 
