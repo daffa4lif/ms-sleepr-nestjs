@@ -14,7 +14,6 @@ services:
   mongodb:
     image: mongo:7.0
     container_name: mongodb
-    restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
