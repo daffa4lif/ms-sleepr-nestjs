@@ -11,6 +11,24 @@ services:
     networks:
       - microservice-network
 
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: npm run start:dev auth
+    container_name: auth
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/usr/src/app
+    env_file:
+      - .env.production.local
+    depends_on:
+      - mongodb
+    networks:
+      - microservice-network
+
   mongodb:
     image: mongo:7.0
     container_name: mongodb
