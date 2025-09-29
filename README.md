@@ -23,6 +23,10 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+# service run
+$ npm run start:dev <app service>
+$ npm run start:dev reservation # example
 ```
 
 ## Run tests
@@ -36,6 +40,14 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Build Docker Command
+
+masuk kedalam folder root apps, sesuai dengan taget dockerfile
+
+```bash
+$ docker build ../../ -f Dockerfile -t <name:tag>
 ```
 
 ## Generate Command
